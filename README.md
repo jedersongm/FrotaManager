@@ -25,6 +25,7 @@ String placa;
 String renavan;
 String cor;
 int km;
+int status;
 
 //ENDEREÇO
 int id;
@@ -35,7 +36,8 @@ String Cidade;
 String Estado;
 String CEP:
 
-
+//LOCAÇÂO 
+idCarro, idFuncionario, kmInicial, kmFinal
 
 
 //Regras Negocios
@@ -48,4 +50,4 @@ String CEP:
 
 -> O sistema deverá informar ao supervisor se o carro está precisando de troca de óleo
 
--> O sistema deve bloquear
+-> O sistema deve bloquear o veiculo quando passar 
