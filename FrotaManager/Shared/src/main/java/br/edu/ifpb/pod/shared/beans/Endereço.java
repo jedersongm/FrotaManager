@@ -3,16 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.ads.pp.frotamanager.entidades;
+package br.edu.ifpb.pod.shared.beans;
 
-import java.util.Objects;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author jederson
  */
-class Endereço {
-    
+@Entity
+class Endereço implements Serializable {
+
+    @Id
+    @GeneratedValue
+    private long id;
     private int numero;
     private String rua;
     private String bairro;
@@ -21,7 +28,7 @@ class Endereço {
     private String CEP;
 
     public Endereço() {
-    
+
     }
 
     public Endereço(int numero, String rua, String bairro, String cidade, String estado, String CEP) {
@@ -31,6 +38,24 @@ class Endereço {
         this.cidade = cidade;
         this.estado = estado;
         this.CEP = CEP;
+    }
+
+    public Endereço(long id, int numero, String rua, String bairro, String cidade, String estado, String CEP) {
+        this.id = id;
+        this.numero = numero;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.CEP = CEP;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getNumero() {
@@ -83,21 +108,13 @@ class Endereço {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + this.numero;
-        hash = 67 * hash + Objects.hashCode(this.rua);
-        hash = 67 * hash + Objects.hashCode(this.bairro);
-        hash = 67 * hash + Objects.hashCode(this.cidade);
-        hash = 67 * hash + Objects.hashCode(this.estado);
-        hash = 67 * hash + Objects.hashCode(this.CEP);
+        int hash = 5;
+        hash = 89 * hash + (int) (this.id ^ (this.id >>> 32));
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }
@@ -105,22 +122,7 @@ class Endereço {
             return false;
         }
         final Endereço other = (Endereço) obj;
-        if (this.numero != other.numero) {
-            return false;
-        }
-        if (!Objects.equals(this.rua, other.rua)) {
-            return false;
-        }
-        if (!Objects.equals(this.bairro, other.bairro)) {
-            return false;
-        }
-        if (!Objects.equals(this.cidade, other.cidade)) {
-            return false;
-        }
-        if (!Objects.equals(this.estado, other.estado)) {
-            return false;
-        }
-        if (!Objects.equals(this.CEP, other.CEP)) {
+        if (this.id != other.id) {
             return false;
         }
         return true;
@@ -128,8 +130,7 @@ class Endereço {
 
     @Override
     public String toString() {
-        return "Endere\u00e7o{" + "numero=" + numero + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", CEP=" + CEP + '}';
+        return "Endere\u00e7o{" + "id=" + id + ", numero=" + numero + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", CEP=" + CEP + '}';
     }
-      
-    
+
 }

@@ -3,18 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.ads.pp.frotamanager.entidades;
+package br.edu.ifpb.pod.shared.beans;
 
-import static br.edu.ifpb.ads.pp.frotamanager.entidades.Tools.isPermited;
+import static br.edu.ifpb.pod.shared.beans.Tools.isPermited;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author jederson
  */
-public class Locação {
-    
+@Entity
+public class Locação implements Serializable {
+
+    @Id
+    @GeneratedValue
+    private long id;
     private Funcionario funcionario;
     private Veiculo veiculo;
     private Integer kmSaida;
@@ -32,6 +39,24 @@ public class Locação {
         this.saida = saida;
         this.kmChegada = kmChegada;
         this.chegada = chegada;
+    }
+
+    public Locação(long id, Funcionario funcionario, Veiculo veiculo, Integer kmSaida, Date saida, Integer kmChegada, Date chegada) {
+        this.id = id;
+        this.funcionario = funcionario;
+        this.veiculo = veiculo;
+        this.kmSaida = kmSaida;
+        this.saida = saida;
+        this.kmChegada = kmChegada;
+        this.chegada = chegada;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Funcionario getFuncionario() {
@@ -82,39 +107,30 @@ public class Locação {
         this.chegada = chegada;
     }
 
-        
-    public boolean categoriaIsPermitid(String categoriaF, String categoriaV){
-        if(categoriaV.equals("A")){
+    public boolean categoriaIsPermitid(String categoriaF, String categoriaV) {
+        if (categoriaV.equals("A")) {
             String[] s = categoriaF.split("|");
-            return s[0].equals(categoriaV);             
-            
-        }else{
-            if(categoriaF.length() > 1){
+            return s[0].equals(categoriaV);
+
+        } else {
+            if (categoriaF.length() > 1) {
                 String[] s = categoriaF.split("|");
                 return isPermited(s[1], categoriaV);
             }
             return isPermited(categoriaF, categoriaV);
         }
-                
+
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.funcionario);
-        hash = 59 * hash + Objects.hashCode(this.veiculo);
-        hash = 59 * hash + Objects.hashCode(this.kmSaida);
-        hash = 59 * hash + Objects.hashCode(this.saida);
-        hash = 59 * hash + Objects.hashCode(this.kmChegada);
-        hash = 59 * hash + Objects.hashCode(this.chegada);
+        hash = 53 * hash + (int) (this.id ^ (this.id >>> 32));
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }
@@ -122,22 +138,7 @@ public class Locação {
             return false;
         }
         final Locação other = (Locação) obj;
-        if (!Objects.equals(this.funcionario, other.funcionario)) {
-            return false;
-        }
-        if (!Objects.equals(this.veiculo, other.veiculo)) {
-            return false;
-        }
-        if (!Objects.equals(this.kmSaida, other.kmSaida)) {
-            return false;
-        }
-        if (!Objects.equals(this.saida, other.saida)) {
-            return false;
-        }
-        if (!Objects.equals(this.kmChegada, other.kmChegada)) {
-            return false;
-        }
-        if (!Objects.equals(this.chegada, other.chegada)) {
+        if (this.id != other.id) {
             return false;
         }
         return true;
@@ -145,8 +146,7 @@ public class Locação {
 
     @Override
     public String toString() {
-        return "Loca\u00e7\u00e3o{" + "funcionario=" + funcionario + ", veiculo=" + veiculo + ", kmSaida=" + kmSaida + ", saida=" + saida + ", kmChegada=" + kmChegada + ", chegada=" + chegada + '}';
+        return "Loca\u00e7\u00e3o{" + "id=" + id + ", funcionario=" + funcionario + ", veiculo=" + veiculo + ", kmSaida=" + kmSaida + ", saida=" + saida + ", kmChegada=" + kmChegada + ", chegada=" + chegada + '}';
     }
-    
-    
+
 }

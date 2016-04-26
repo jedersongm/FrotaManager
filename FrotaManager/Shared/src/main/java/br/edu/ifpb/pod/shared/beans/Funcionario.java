@@ -3,17 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.ads.pp.frotamanager.entidades;
+package br.edu.ifpb.pod.shared.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author jederson
  */
-public class Funcionario {
-    
+@Entity
+public class Funcionario implements Serializable {
+
+    @Id
+    @GeneratedValue
+    private long id;
     private int cod;
     private String nome;
     private String senha;
@@ -47,6 +55,32 @@ public class Funcionario {
         this.foto = foto;
         this.cargo = cargo;
         this.endereço = endereço;
+    }
+
+    public Funcionario(long id, int cod, String nome, String senha, String email, String celular, String telefoneEmpresa, Date dataNascimento, String sexo, String CPF, String CNH, String categoria, String foto, String cargo, Endereço endereço) {
+        this.id = id;
+        this.cod = cod;
+        this.nome = nome;
+        this.senha = senha;
+        this.email = email;
+        this.celular = celular;
+        this.telefoneEmpresa = telefoneEmpresa;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        this.CPF = CPF;
+        this.CNH = CNH;
+        this.categoria = categoria;
+        this.foto = foto;
+        this.cargo = cargo;
+        this.endereço = endereço;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getCod() {
@@ -120,7 +154,7 @@ public class Funcionario {
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
-    
+
     public String getCNH() {
         return CNH;
     }
@@ -136,7 +170,7 @@ public class Funcionario {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
+
     public String getFoto() {
         return foto;
     }
@@ -163,29 +197,13 @@ public class Funcionario {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + this.cod;
-        hash = 89 * hash + Objects.hashCode(this.nome);
-        hash = 89 * hash + Objects.hashCode(this.senha);
-        hash = 89 * hash + Objects.hashCode(this.email);
-        hash = 89 * hash + Objects.hashCode(this.celular);
-        hash = 89 * hash + Objects.hashCode(this.telefoneEmpresa);
-        hash = 89 * hash + Objects.hashCode(this.dataNascimento);
-        hash = 89 * hash + Objects.hashCode(this.sexo);
-        hash = 89 * hash + Objects.hashCode(this.CPF);
-        hash = 89 * hash + Objects.hashCode(this.CNH);
-        hash = 89 * hash + Objects.hashCode(this.categoria);
-        hash = 89 * hash + Objects.hashCode(this.foto);
-        hash = 89 * hash + Objects.hashCode(this.cargo);
-        hash = 89 * hash + Objects.hashCode(this.endereço);
+        int hash = 3;
+        hash = 53 * hash + (int) (this.id ^ (this.id >>> 32));
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }
@@ -193,46 +211,7 @@ public class Funcionario {
             return false;
         }
         final Funcionario other = (Funcionario) obj;
-        if (this.cod != other.cod) {
-            return false;
-        }
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.senha, other.senha)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.celular, other.celular)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefoneEmpresa, other.telefoneEmpresa)) {
-            return false;
-        }
-        if (!Objects.equals(this.sexo, other.sexo)) {
-            return false;
-        }
-        if (!Objects.equals(this.CPF, other.CPF)) {
-            return false;
-        }
-        if (!Objects.equals(this.CNH, other.CNH)) {
-            return false;
-        }
-        if (!Objects.equals(this.categoria, other.categoria)) {
-            return false;
-        }
-        if (!Objects.equals(this.foto, other.foto)) {
-            return false;
-        }
-        if (!Objects.equals(this.cargo, other.cargo)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
-            return false;
-        }
-        if (!Objects.equals(this.endereço, other.endereço)) {
+        if (this.id != other.id) {
             return false;
         }
         return true;
@@ -240,9 +219,7 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Funcionario{" + "cod=" + cod + ", nome=" + nome + ", senha=" + senha + ", email=" + email + ", celular=" + celular + ", telefoneEmpresa=" + telefoneEmpresa + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", CPF=" + CPF + ", CNH=" + CNH + ", categoria=" + categoria + ", foto=" + foto + ", cargo=" + cargo + ", endere\u00e7o=" + endereço + '}';
+        return "Funcionario{" + "id=" + id + ", cod=" + cod + ", nome=" + nome + ", senha=" + senha + ", email=" + email + ", celular=" + celular + ", telefoneEmpresa=" + telefoneEmpresa + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", CPF=" + CPF + ", CNH=" + CNH + ", categoria=" + categoria + ", foto=" + foto + ", cargo=" + cargo + ", endere\u00e7o=" + endereço + '}';
     }
 
-     
-    
 }
