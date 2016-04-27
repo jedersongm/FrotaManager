@@ -7,10 +7,12 @@ package br.edu.ifpb.pod.shared.beans;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -28,6 +30,7 @@ public class Funcionario implements Serializable {
     private String email;
     private String celular;
     private String telefoneEmpresa;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataNascimento;
     private String sexo;
     private String CPF;
@@ -35,12 +38,15 @@ public class Funcionario implements Serializable {
     private String categoria;
     private String foto;
     private String cargo;
+    @Embedded
     private Endereço endereço;
+    @OneToOne(mappedBy = "funcionario")
+    private Locacao locação;
 
     public Funcionario() {
     }
 
-    public Funcionario(int cod, String nome, String senha, String email, String celular, String telefoneEmpresa, Date dataNascimento, String sexo, String CPF, String CNH, String categoria, String foto, String cargo, Endereço endereço) {
+    public Funcionario(int cod, String nome, String senha, String email, String celular, String telefoneEmpresa, Date dataNascimento, String sexo, String CPF, String CNH, String categoria, String foto, String cargo, Endereço endereço, Locacao locação) {
         this.cod = cod;
         this.nome = nome;
         this.senha = senha;
@@ -55,9 +61,10 @@ public class Funcionario implements Serializable {
         this.foto = foto;
         this.cargo = cargo;
         this.endereço = endereço;
+        this.locação = locação;
     }
 
-    public Funcionario(long id, int cod, String nome, String senha, String email, String celular, String telefoneEmpresa, Date dataNascimento, String sexo, String CPF, String CNH, String categoria, String foto, String cargo, Endereço endereço) {
+    public Funcionario(long id, int cod, String nome, String senha, String email, String celular, String telefoneEmpresa, Date dataNascimento, String sexo, String CPF, String CNH, String categoria, String foto, String cargo, Endereço endereço, Locacao locação) {
         this.id = id;
         this.cod = cod;
         this.nome = nome;
@@ -73,6 +80,7 @@ public class Funcionario implements Serializable {
         this.foto = foto;
         this.cargo = cargo;
         this.endereço = endereço;
+        this.locação = locação;
     }
 
     public long getId() {
@@ -195,10 +203,18 @@ public class Funcionario implements Serializable {
         this.endereço = endereço;
     }
 
+    public Locacao getLocação() {
+        return locação;
+    }
+
+    public void setLocação(Locacao locação) {
+        this.locação = locação;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + (int) (this.id ^ (this.id >>> 32));
+        int hash = 7;
+        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
         return hash;
     }
 
@@ -219,7 +235,7 @@ public class Funcionario implements Serializable {
 
     @Override
     public String toString() {
-        return "Funcionario{" + "id=" + id + ", cod=" + cod + ", nome=" + nome + ", senha=" + senha + ", email=" + email + ", celular=" + celular + ", telefoneEmpresa=" + telefoneEmpresa + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", CPF=" + CPF + ", CNH=" + CNH + ", categoria=" + categoria + ", foto=" + foto + ", cargo=" + cargo + ", endere\u00e7o=" + endereço + '}';
+        return "Funcionario{" + "id=" + id + ", cod=" + cod + ", nome=" + nome + ", senha=" + senha + ", email=" + email + ", celular=" + celular + ", telefoneEmpresa=" + telefoneEmpresa + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", CPF=" + CPF + ", CNH=" + CNH + ", categoria=" + categoria + ", foto=" + foto + ", cargo=" + cargo + ", endere\u00e7o=" + endereço + ", loca\u00e7\u00e3o=" + locação + '}';
     }
 
 }

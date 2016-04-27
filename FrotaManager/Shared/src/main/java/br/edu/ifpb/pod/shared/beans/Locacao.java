@@ -11,28 +11,34 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author jederson
  */
 @Entity
-public class Locação implements Serializable {
+public class Locacao implements Serializable {
 
     @Id
     @GeneratedValue
-    private long id;
+    private long id;    
+    @OneToOne
     private Funcionario funcionario;
+    @OneToOne
     private Veiculo veiculo;
     private Integer kmSaida;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date saida;
     private Integer kmChegada;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date chegada;
 
-    public Locação() {
+    public Locacao() {
     }
 
-    public Locação(Funcionario funcionario, Veiculo veiculo, Integer kmSaida, Date saida, Integer kmChegada, Date chegada) {
+    public Locacao(Funcionario funcionario, Veiculo veiculo, Integer kmSaida, Date saida, Integer kmChegada, Date chegada) {
         this.funcionario = funcionario;
         this.veiculo = veiculo;
         this.kmSaida = kmSaida;
@@ -41,7 +47,7 @@ public class Locação implements Serializable {
         this.chegada = chegada;
     }
 
-    public Locação(long id, Funcionario funcionario, Veiculo veiculo, Integer kmSaida, Date saida, Integer kmChegada, Date chegada) {
+    public Locacao(long id, Funcionario funcionario, Veiculo veiculo, Integer kmSaida, Date saida, Integer kmChegada, Date chegada) {
         this.id = id;
         this.funcionario = funcionario;
         this.veiculo = veiculo;
@@ -137,7 +143,7 @@ public class Locação implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Locação other = (Locação) obj;
+        final Locacao other = (Locacao) obj;
         if (this.id != other.id) {
             return false;
         }

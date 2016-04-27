@@ -6,20 +6,15 @@
 package br.edu.ifpb.pod.shared.beans;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author jederson
  */
-@Entity
+@Embeddable
 class Endereço implements Serializable {
 
-    @Id
-    @GeneratedValue
-    private long id;
     private int numero;
     private String rua;
     private String bairro;
@@ -38,24 +33,6 @@ class Endereço implements Serializable {
         this.cidade = cidade;
         this.estado = estado;
         this.CEP = CEP;
-    }
-
-    public Endereço(long id, int numero, String rua, String bairro, String cidade, String estado, String CEP) {
-        this.id = id;
-        this.numero = numero;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.CEP = CEP;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public int getNumero() {
@@ -108,8 +85,8 @@ class Endereço implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + (int) (this.id ^ (this.id >>> 32));
+        int hash = 7;
+        hash = 97 * hash + this.numero;
         return hash;
     }
 
@@ -122,7 +99,7 @@ class Endereço implements Serializable {
             return false;
         }
         final Endereço other = (Endereço) obj;
-        if (this.id != other.id) {
+        if (this.numero != other.numero) {
             return false;
         }
         return true;
@@ -130,7 +107,7 @@ class Endereço implements Serializable {
 
     @Override
     public String toString() {
-        return "Endere\u00e7o{" + "id=" + id + ", numero=" + numero + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", CEP=" + CEP + '}';
+        return "Endere\u00e7o{" + "numero=" + numero + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", CEP=" + CEP + '}';
     }
 
 }
