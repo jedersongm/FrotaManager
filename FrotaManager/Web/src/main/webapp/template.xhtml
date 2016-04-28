@@ -14,15 +14,15 @@
                     <h:form styleClass="navbar-form navbar-right">
                         <div class="form-group">
                             <h:outputLabel for="login" value="Login:"/>
-                            <bnu:inputText id="login" value="#{serviceFuncionarioImpl.funcionario.cod}" class="form-control" placeholder="login" required="true"/>
+                            <bnu:inputText id="login" value="#{controladorFuncionario.cod}" class="form-control" placeholder="login" required="true"/>
                             <h:message for="login"/>
                         </div>
                         <div class="form-group">
                             <h:outputLabel for="password" value="Password:"/>
-                            <bnu:inputSecret id="password" value="#{serviceFuncionarioImpl.funcionario.senha}" class="form-control" placeholder="senha" required="true"/>
+                            <bnu:inputSecret id="password" value="#{controladorFuncionario.senha}" class="form-control" placeholder="senha" required="true"/>
                             <h:message for="password"/>
                         </div>
-                        <bnu:commandButton value="Sign In" look="success" action="#{serviceFuncionarioImpl.login()}" />
+                        <bnu:commandButton value="Sign In" look="success" action="#{controladorFuncionario.login()}" />
                     </h:form>                    
                 </bnu:navBar>
             </ui:insert>

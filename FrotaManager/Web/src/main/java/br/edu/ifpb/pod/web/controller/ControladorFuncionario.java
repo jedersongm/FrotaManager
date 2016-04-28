@@ -22,8 +22,26 @@ public class ControladorFuncionario implements Serializable {
     //#{controladorFuncionario.Funcionario}
     
     private Funcionario funcionario;
+    private int cod;
+    private String senha;
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
     
-    
+        
 
     @Inject
     private ServiceFuncionario serviceFuncionario;
@@ -36,5 +54,15 @@ public class ControladorFuncionario implements Serializable {
 
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
+    }
+    
+    public String login(){
+        
+       funcionario = serviceFuncionario.login(cod, senha);
+       
+       if(funcionario != null){
+           return "index.xhtml";
+       }
+       return "";
     }
 }
