@@ -6,6 +6,8 @@
 package br.edu.ifpb.pod.web.controller.cdi;
 
 import br.edu.ifpb.pod.shared.service.ServiceFuncionario;
+import br.edu.ifpb.pod.shared.service.ServiceLocacao;
+import br.edu.ifpb.pod.shared.service.ServiceVeiculo;
 import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
@@ -20,4 +22,12 @@ public class ProducerResource {
     @Produces
     @Resource(lookup = "java:global/Core/ServiceFuncionarioImpl")
     private ServiceFuncionario serviceFuncionario;
+
+    @Produces
+    @Resource(lookup = "java:global/Core/ServiceLocacaoImpl")
+    private ServiceLocacao serviceLocacao;
+
+    @Produces
+    @Resource(lookup = "java:global/Core/ServiceVeiculoImpl")
+    private ServiceVeiculo serviceVeiculo;
 }
