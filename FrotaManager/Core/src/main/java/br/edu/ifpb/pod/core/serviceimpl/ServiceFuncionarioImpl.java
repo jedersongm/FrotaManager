@@ -48,4 +48,9 @@ public class ServiceFuncionarioImpl implements ServiceFuncionario {
     public List<Funcionario> listar() {
         return funcionarioDao.listar();
     }
+    
+    @Override
+    public Funcionario login(int cod, String senha){        
+        return funcionarioDao.login(cod, senha);
+    }
 }

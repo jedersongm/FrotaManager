@@ -19,7 +19,7 @@ import javax.persistence.Query;
 @Stateless
 public class FuncionarioDao {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "FrotaManager")
     private EntityManager em;
 
     public FuncionarioDao() {
@@ -50,6 +50,15 @@ public class FuncionarioDao {
         List<Funcionario> funcionarios = query.getResultList();
         if (funcionarios.size() > 0) {
             return funcionarios;
+        }
+        return null;
+    }
+    
+    public Funcionario login(int cod, String senha){
+        Query query = em.createQuery("SELECT f FROM Funcionario f WHERE f.cod=:cod AND f.senha =: senha");
+        List<Funcionario> funcionarios = query.getResultList();
+        if (funcionarios.size() > 0) {
+            return funcionarios.get(0);
         }
         return null;
     }

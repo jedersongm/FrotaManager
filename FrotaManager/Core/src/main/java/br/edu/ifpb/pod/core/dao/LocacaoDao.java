@@ -19,7 +19,7 @@ import javax.persistence.Query;
 @Stateless
 public class LocacaoDao {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "FrotaManager")
     private EntityManager em;
 
     public LocacaoDao() {
