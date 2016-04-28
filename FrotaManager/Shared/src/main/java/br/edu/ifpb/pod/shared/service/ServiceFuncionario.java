@@ -23,4 +23,6 @@ public interface ServiceFuncionario {
     public Funcionario pesquisar(Class<Funcionario> entidade, Object chave);
 
     public List<Funcionario> listar();
+    
+    public Funcionario login(int cod, String senha);
 }

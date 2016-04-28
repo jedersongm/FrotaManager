@@ -22,8 +22,7 @@ import javax.persistence.Temporal;
 public class Funcionario implements Serializable {
 
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue    
     private int cod;
     private String nome;
     private String senha;
@@ -65,7 +64,6 @@ public class Funcionario implements Serializable {
     }
 
     public Funcionario(long id, int cod, String nome, String senha, String email, String celular, String telefoneEmpresa, Date dataNascimento, String sexo, String CPF, String CNH, String categoria, String foto, String cargo, Endereço endereço, Locacao locação) {
-        this.id = id;
         this.cod = cod;
         this.nome = nome;
         this.senha = senha;
@@ -81,14 +79,6 @@ public class Funcionario implements Serializable {
         this.cargo = cargo;
         this.endereço = endereço;
         this.locação = locação;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public int getCod() {
@@ -213,10 +203,12 @@ public class Funcionario implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
+        int hash = 3;
+        hash = 23 * hash + this.cod;
         return hash;
     }
+
+    
 
     @Override
     public boolean equals(Object obj) {
@@ -227,7 +219,7 @@ public class Funcionario implements Serializable {
             return false;
         }
         final Funcionario other = (Funcionario) obj;
-        if (this.id != other.id) {
+        if (this.cod != other.cod) {
             return false;
         }
         return true;
@@ -235,7 +227,7 @@ public class Funcionario implements Serializable {
 
     @Override
     public String toString() {
-        return "Funcionario{" + "id=" + id + ", cod=" + cod + ", nome=" + nome + ", senha=" + senha + ", email=" + email + ", celular=" + celular + ", telefoneEmpresa=" + telefoneEmpresa + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", CPF=" + CPF + ", CNH=" + CNH + ", categoria=" + categoria + ", foto=" + foto + ", cargo=" + cargo + ", endere\u00e7o=" + endereço + ", loca\u00e7\u00e3o=" + locação + '}';
+        return "Funcionario{" + "cod=" + cod + ", nome=" + nome + ", senha=" + senha + ", email=" + email + ", celular=" + celular + ", telefoneEmpresa=" + telefoneEmpresa + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", CPF=" + CPF + ", CNH=" + CNH + ", categoria=" + categoria + ", foto=" + foto + ", cargo=" + cargo + ", endere\u00e7o=" + endereço + ", loca\u00e7\u00e3o=" + locação + '}';
     }
 
 }
