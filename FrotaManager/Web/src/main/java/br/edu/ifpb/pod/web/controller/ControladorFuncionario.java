@@ -19,8 +19,12 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class ControladorFuncionario implements Serializable {
-    //#{controladorFuncionario.Funcionario}
-    
+
+    @Inject
+    private ServiceFuncionario serviceFuncionario;
+    //Nãão sei se vai funcionar pq ainda não terminei os controladores
+    //Tenho que ver direito como faz com CDI, tem uma configuração que não lembro como faz.
+
     private Funcionario funcionario;
     private int cod;
     private String senha;
@@ -40,13 +44,6 @@ public class ControladorFuncionario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-        
-
-    @Inject
-    private ServiceFuncionario serviceFuncionario;
-    //Nãão sei se vai funcionar pq ainda não terminei os controladores
-    //Tenho que ver direito como faz com CDI, tem uma configuração que não lembro como faz.
 
     public Funcionario getFuncionario() {
         return funcionario;
@@ -55,14 +52,14 @@ public class ControladorFuncionario implements Serializable {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
-    
-    public String login(){
-        
-       funcionario = serviceFuncionario.login(cod, senha);
-       
-       if(funcionario != null){
-           return "index.xhtml";
-       }
-       return "";
+
+    public String login() {
+
+        funcionario = serviceFuncionario.login(cod, senha);
+
+        if (funcionario != null) {
+            return "index.xhtml";
+        }
+        return "";
     }
 }

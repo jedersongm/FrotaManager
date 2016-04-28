@@ -53,9 +53,11 @@ public class FuncionarioDao {
         }
         return null;
     }
-    
-    public Funcionario login(int cod, String senha){
-        Query query = em.createQuery("SELECT f FROM Funcionario f WHERE f.cod=:cod AND f.senha =: senha");
+
+    public Funcionario login(int cod, String senha) {
+        Query query = em.createQuery("SELECT f FROM Funcionario f WHERE f.cod = :cod AND f.senha = :senha");
+        query.setParameter("cod", cod);
+        query.setParameter("senha", senha);
         List<Funcionario> funcionarios = query.getResultList();
         if (funcionarios.size() > 0) {
             return funcionarios.get(0);

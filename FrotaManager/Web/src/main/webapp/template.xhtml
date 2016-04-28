@@ -11,7 +11,7 @@
         <div id="header">
             <ui:insert name="header">
                 <bnu:navBar brand="FrotaManager" fixed="top">
-                    <h:form styleClass="navbar-form navbar-right">
+                    <h:form styleClass="navbar-form navbar-right" rendered="#{controladorFuncionario.funcionario == null}">
                         <div class="form-group">
                             <h:outputLabel for="login" value="Login:"/>
                             <bnu:inputText id="login" value="#{controladorFuncionario.cod}" class="form-control" placeholder="login" required="true"/>
@@ -24,18 +24,23 @@
                         </div>
                         <bnu:commandButton value="Sign In" look="success" action="#{controladorFuncionario.login()}" />
                     </h:form>                    
+
+                    <div Class="navbar-form navbar-right">
+                        #{controladorFuncionario.funcionario.nome}
+                    </div>
+
                 </bnu:navBar>
             </ui:insert>
         </div>
         <div id="center">
-            
+
         </div>
         <div id="footer">
             <ui:insert name="footer">
                 <p>&copy; Jéderson&amp;Kaique - IFPB 2016</p>
             </ui:insert>
         </div>
-        
+
     </h:body>
 </html>
 

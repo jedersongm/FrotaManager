@@ -16,8 +16,8 @@ import javax.enterprise.inject.Produces;
  */
 @ApplicationScoped
 public class ProducerResource {
-    
+
     @Produces
-    @Resource(lookup = )
+    @Resource(lookup = "java:global/Core/ServiceFuncionarioImpl")
     private ServiceFuncionario serviceFuncionario;
 }
