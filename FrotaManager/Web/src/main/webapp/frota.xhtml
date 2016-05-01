@@ -35,22 +35,40 @@ and open the template in the editor.
             </li>
             <li>
                 <div>
-                    <button data-toggle="modal" data-target="#novoCliente" class="dj-button btn-primary">                        
-                        <span class="glyphicon glyphicon-ban-circle"></span>  
-                    </button>
+                    <h:form>
+                        <h:commandLink action="#{controladorLocacao.locarVeiculo(controladorVeiculo.veiculoSelecionado, controladorFuncionario.funcionario)}">
+                            <button data-toggle="modal" data-target="#novoCliente" class="dj-button btn-primary">                        
+                                <span class="glyphicon glyphicon-ban-circle"></span>  
+                            </button>
+                        </h:commandLink>
+                    </h:form>
                 </div>
             </li>
             <li>
                 <div>
-                    <button class="dj-button btn-danger">                        
-                        <span class="glyphicon glyphicon-ok-circle"></span>  
-                    </button>
+                    <h:form>
+                        <h:commandLink action="#{controladorLocacao.deslocarVeiculo(controladorVeiculo.veiculoSelecionado)}">
+                            <button class="dj-button btn-danger">                        
+                                <span class="glyphicon glyphicon-ok-circle"></span>  
+                            </button>
+                        </h:commandLink>
+                    </h:form>
+
                 </div>
-            </li>                        
+            </li>  
+            <li>
+                <div>                    
+                    <h:form>
+                        <h:commandButton class="dj-button btn-primary" value="RECARREGAR" action="#{controladorVeiculo.carregarCarros()}"/>
+                    </h:form>
+                </div>
+            </li>
+
         </ul>
     </div>
     <table class="table table-responsive">
         <tr class="hidden-xs">
+            <th></th>
             <th></th>
             <th>ID</th>
             <th>Fabricante</th>
@@ -58,24 +76,35 @@ and open the template in the editor.
             <th>Ano</th>
             <th>Placa</th>
             <th>Categoria</th>
-            <th>Km's</th>
+            <th>Km Rodado</th>
             <th>Status</th>
             <th></th>
         </tr>   
-        foreach #{controladorVeiculo.frota.size()}
-        <c:forEach items="#{controladorVeiculo.frota}" var="veiculo">
-            <tr>                                   
-                <td class="hidden-xs"></td>
-                <td class="hidden-xs">#{veiculo.cod}</td>                            
-                <td class="hidden-xs">#{veiculo.fabricante}</td>
-                <td class="hidden-xs">#{veiculo.modelo}</td>
-                <td class="hidden-xs">#{veiculo.ano}</td>                            
-                <td class="hidden-xs">#{veiculo.placa}</td>
-                <td class="hidden-xs">#{veiculo.categoria}</td>
-                <td class="hidden-xs">#{veiculo.km}</td>                            
-                <td class="hidden-xs">#{veiculo.status}</td>
-                <td class="hidden-xs"></td>
-            </tr>
+        #{controladorVeiculo.listaDeVeiculos.size()}
+        <c:forEach items="#{controladorVeiculo.listaDeVeiculos}" var="veiculo">
+            <h:form>                
+                <tr>  
+                    <td class="hidden-xs"></td>
+
+                    <td class="hidden-xs">
+                        <h:commandLink action="#{controladorVeiculo.selecionarVeiculo(veiculo)}">
+                            <input type="checkbox"/>
+                        </h:commandLink>
+                    </td>
+
+                    <td class="hidden-xs">#{veiculo.cod}</td>                            
+                    <td class="hidden-xs">#{veiculo.fabricante}</td>
+                    <td class="hidden-xs">#{veiculo.modelo}</td>
+                    <td class="hidden-xs">#{veiculo.ano}</td>                            
+                    <td class="hidden-xs">#{veiculo.placa}</td>
+                    <td class="hidden-xs">#{veiculo.categoria}</td>
+                    <td class="hidden-xs">#{veiculo.km}</td>                            
+                    <td class="hidden-xs">#{veiculo.status}</td>
+                    <td class="hidden-xs"></td>
+
+                </tr>
+
+            </h:form>
         </c:forEach>
     </table>   
 

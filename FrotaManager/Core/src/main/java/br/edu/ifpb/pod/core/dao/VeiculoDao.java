@@ -48,8 +48,10 @@ public class VeiculoDao {
         Query query = em.createQuery("SELECT v FROM Veiculo v");
         List<Veiculo> veiculos = query.getResultList();
         if (veiculos.size() > 0) {
+            System.out.println("Não está vazia");
             return veiculos;
         }
+        System.out.println("Esta Vazia");
         return null;
     }
 }

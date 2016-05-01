@@ -45,7 +45,7 @@ public class LocacaoDao {
     }
 
     public List<Locacao> listar() {
-        Query query = em.createQuery("SELECT l FROM Locacao l ORDER BY l.id");
+        Query query = em.createQuery("SELECT l FROM Locacao l");
         List<Locacao> locacaos = query.getResultList();
         if (locacaos.size() > 0) {
             return locacaos;

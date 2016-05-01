@@ -7,6 +7,7 @@ package br.edu.ifpb.pod.shared.beans;
 
 import static br.edu.ifpb.pod.shared.beans.Status.LIVRE;
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -134,7 +135,16 @@ public class Veiculo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + (int) (this.cod ^ (this.cod >>> 32));
+        hash = 47 * hash + this.cod;
+        hash = 47 * hash + Objects.hashCode(this.fabricante);
+        hash = 47 * hash + Objects.hashCode(this.modelo);
+        hash = 47 * hash + Objects.hashCode(this.ano);
+        hash = 47 * hash + Objects.hashCode(this.placa);
+        hash = 47 * hash + Objects.hashCode(this.renavan);
+        hash = 47 * hash + Objects.hashCode(this.cor);
+        hash = 47 * hash + Objects.hashCode(this.categoria);
+        hash = 47 * hash + this.km;
+        hash = 47 * hash + Objects.hashCode(this.status);
         return hash;
     }
 
@@ -150,12 +160,34 @@ public class Veiculo implements Serializable {
         if (this.cod != other.cod) {
             return false;
         }
+        if (!Objects.equals(this.fabricante, other.fabricante)) {
+            return false;
+        }
+        if (!Objects.equals(this.modelo, other.modelo)) {
+            return false;
+        }
+        if (!Objects.equals(this.ano, other.ano)) {
+            return false;
+        }
+        if (!Objects.equals(this.placa, other.placa)) {
+            return false;
+        }
+        if (!Objects.equals(this.renavan, other.renavan)) {
+            return false;
+        }
+        if (!Objects.equals(this.cor, other.cor)) {
+            return false;
+        }
+        if (!Objects.equals(this.categoria, other.categoria)) {
+            return false;
+        }
+        if (this.km != other.km) {
+            return false;
+        }
+        if (this.status != other.status) {
+            return false;
+        }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Veiculo{" + "cod=" + cod + ", fabricante=" + fabricante + ", modelo=" + modelo + ", ano=" + ano + ", placa=" + placa + ", renavan=" + renavan + ", cor=" + cor + ", categoria=" + categoria + ", km=" + km + ", status=" + status + '}';
     }
 
 }

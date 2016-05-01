@@ -8,6 +8,7 @@ package br.edu.ifpb.pod.shared.beans;
 import static br.edu.ifpb.pod.shared.beans.Tools.isPermited;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,10 +24,10 @@ public class Locacao implements Serializable {
 
     @Id
     @GeneratedValue
-    private long id;    
-    @OneToOne
+    private long id;
+    @OneToOne(cascade = CascadeType.ALL)
     private Funcionario funcionario;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Veiculo veiculo;
     private Integer kmSaida;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -148,11 +149,6 @@ public class Locacao implements Serializable {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Loca\u00e7\u00e3o{" + "id=" + id + ", funcionario=" + funcionario + ", veiculo=" + veiculo + ", kmSaida=" + kmSaida + ", saida=" + saida + ", kmChegada=" + kmChegada + ", chegada=" + chegada + '}';
-    }
+    }    
 
 }

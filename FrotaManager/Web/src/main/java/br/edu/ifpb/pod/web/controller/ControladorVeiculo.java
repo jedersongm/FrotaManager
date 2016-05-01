@@ -5,12 +5,8 @@
  */
 package br.edu.ifpb.pod.web.controller;
 
-import br.edu.ifpb.pod.shared.beans.Funcionario;
-import br.edu.ifpb.pod.shared.beans.Locacao;
 import br.edu.ifpb.pod.shared.beans.Status;
 import br.edu.ifpb.pod.shared.beans.Veiculo;
-import br.edu.ifpb.pod.shared.service.ServiceFuncionario;
-import br.edu.ifpb.pod.shared.service.ServiceLocacao;
 import br.edu.ifpb.pod.shared.service.ServiceVeiculo;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,11 +27,29 @@ public class ControladorVeiculo implements Serializable {
     private ServiceVeiculo serviceVeiculo;
 
     private Veiculo novoVeiculo;
-    private List<Veiculo> frota;
+    private Veiculo veiculoSelecionado;
+    private List<Veiculo> listaDeVeiculos;
 
     public ControladorVeiculo() {
         novoVeiculo = new Veiculo();
-        frota = new ArrayList<Veiculo>();
+        veiculoSelecionado = new Veiculo();
+        listaDeVeiculos = new ArrayList<Veiculo>();
+    }
+
+    public Veiculo getVeiculoSelecionado() {
+        return veiculoSelecionado;
+    }
+
+    public void setVeiculoSelecionado(Veiculo veiculoSelecionado) {
+        this.veiculoSelecionado = veiculoSelecionado;
+    }
+
+    public List<Veiculo> getListaDeVeiculos() {
+        return listaDeVeiculos;
+    }
+
+    public void setListaDeVeiculos(List<Veiculo> listaDeVeiculos) {
+        this.listaDeVeiculos = listaDeVeiculos;
     }
 
     public Veiculo getNovoVeiculo() {
@@ -46,21 +60,19 @@ public class ControladorVeiculo implements Serializable {
         this.novoVeiculo = novoVeiculo;
     }
 
-    public List<Veiculo> getFrota() {
-        return frota;
-    }
-
-    public void setFrota(List<Veiculo> frota) {
-        this.frota = frota;
-    }
-
-    public void listarVeiculos() {
-        frota = serviceVeiculo.listar();
-    }
-
     public String salvarVeiculo() {
         novoVeiculo.setStatus(Status.LIVRE);
         serviceVeiculo.salvar(novoVeiculo);
+        return "";
+    }
+
+    public void carregarCarros() {
+        listaDeVeiculos = serviceVeiculo.listar();
+    }
+
+    public String selecionarVeiculo(Veiculo veiculo) {
+        veiculoSelecionado = veiculo;
+        System.out.println(veiculoSelecionado);        
         return "";
     }
 }

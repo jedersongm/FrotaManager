@@ -6,9 +6,7 @@
       xmlns:bnu="http://bootsfaces.net/ui">
 
     <h:head>
-        <br/>
-        <br/>                
-        <br/>  
+        <br/>               
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
@@ -27,12 +25,12 @@
                  <bnu:navBar brand="FrotaManager" fixed="top">
                     <h:form styleClass="navbar-form navbar-right" rendered="#{controladorFuncionario.funcionario == null}">
                         <div class="form-group">
-                            <h:outputLabel for="login" value="Login:"/>
+                            <h:outputLabel for="login" value="Login: "/>
                             <bnu:inputText id="login" value="#{controladorFuncionario.cod}" class="form-control" placeholder="login" required="true"/>
                             <h:message for="login"/>
                         </div>
                         <div class="form-group">
-                            <h:outputLabel for="password" value="Password:"/>
+                            <h:outputLabel for="password" value="Password: "/>
                             <bnu:inputSecret id="password" value="#{controladorFuncionario.senha}" class="form-control" placeholder="senha" required="true"/>
                             <h:message for="password"/>
                         </div>

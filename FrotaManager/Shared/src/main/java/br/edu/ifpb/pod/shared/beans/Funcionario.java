@@ -7,6 +7,7 @@ package br.edu.ifpb.pod.shared.beans;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ import javax.persistence.Temporal;
 public class Funcionario implements Serializable {
 
     @Id
-    @GeneratedValue    
+    @GeneratedValue
     private int cod;
     private String nome;
     private String senha;
@@ -40,7 +41,7 @@ public class Funcionario implements Serializable {
     private String cargo;
     @Embedded
     private Endereço endereço;
-    @OneToOne(mappedBy = "funcionario")
+    @OneToOne(mappedBy = "funcionario", cascade = CascadeType.ALL)
     private Locacao locação;
 
     public Funcionario() {
@@ -64,8 +65,6 @@ public class Funcionario implements Serializable {
         this.endereço = endereço;
         this.locação = locação;
     }
-
-    
 
     public Funcionario(long id, int cod, String nome, String senha, String email, String celular, String telefoneEmpresa, Date dataNascimento, String sexo, String CPF, String CNH, String categoria, String foto, String cargo, Endereço endereço, Locacao locação) {
         this.cod = cod;
@@ -220,8 +219,6 @@ public class Funcionario implements Serializable {
         return hash;
     }
 
-    
-
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -235,12 +232,6 @@ public class Funcionario implements Serializable {
             return false;
         }
         return true;
-    }
+    }   
 
-    @Override
-    public String toString() {
-        return "Funcionario{" + "cod=" + cod + ", nome=" + nome + ", senha=" + senha + ", email=" + email + ", celular=" + celular + ", telefoneEmpresa=" + telefoneEmpresa + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", CPF=" + CPF + ", CNH=" + CNH + ", categoria=" + categoria + ", foto=" + foto + ", admin=" + admin + ", cargo=" + cargo + ", endere\u00e7o=" + endereço + ", loca\u00e7\u00e3o=" + locação + '}';
-    }
-
-   
 }
