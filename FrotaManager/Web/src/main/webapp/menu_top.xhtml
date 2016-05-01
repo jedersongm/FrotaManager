@@ -6,14 +6,22 @@
       xmlns:bnu="http://bootsfaces.net/ui">
 
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <br/>
+        <br/>                
+        <br/>  
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>        
+        
+        <h:outputStylesheet name="./css/estilo.css"/>
+        <h:outputStylesheet name="./css/bootstrap-theme.css"/>
+        <h:outputStylesheet name="./css/bootstrap.css"/>
         <title>Facelets Template</title>
     </h:head>
 
     <h:body>
-
         <div id="top">
             <ui:insert name="top">
                  <bnu:navBar brand="FrotaManager" fixed="top">
@@ -34,21 +42,8 @@
                     <div class="navbar-form navbar-right">
                         #{controladorFuncionario.funcionario.nome}
                     </div>
-
                 </bnu:navBar>
             </ui:insert>
         </div>
-
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
-        </div>
-
-        <div id="bottom">
-            <ui:insert name="bottom">
-                <p>&copy; Jéderson&amp;Kaique - IFPB 2016</p>
-            </ui:insert>
-        </div>
-
-    </h:body>
-
+    </h:body>    
 </html>

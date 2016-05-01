@@ -2,13 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
-    <ui:composition template="template.xhtml">
-        <ui:define name="center">
-            <p>Frota Manager - Netline</p>
-        </ui:define>
-    </ui:composition>
-    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:include src="menu_top.xhtml" />
+    <c:if test="#{controladorFuncionario.funcionario != null}">
+        <ui:include src="frota.xhtml" />
+    </c:if>
+
+    <ui:include src="footer.xhtml" />
+
 </html>
 

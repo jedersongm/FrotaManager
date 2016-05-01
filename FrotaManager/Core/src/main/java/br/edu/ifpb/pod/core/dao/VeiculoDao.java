@@ -45,7 +45,7 @@ public class VeiculoDao {
     }
 
     public List<Veiculo> listar() {
-        Query query = em.createQuery("SELECT v FROM Veiculo v ORDER BY v.placa");
+        Query query = em.createQuery("SELECT v FROM Veiculo v");
         List<Veiculo> veiculos = query.getResultList();
         if (veiculos.size() > 0) {
             return veiculos;

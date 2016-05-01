@@ -8,6 +8,8 @@ package br.edu.ifpb.pod.shared.beans;
 import static br.edu.ifpb.pod.shared.beans.Status.LIVRE;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -29,10 +31,11 @@ public class Veiculo implements Serializable {
     private String cor;
     private String categoria;
     private int km;
-    private int status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     public Veiculo() {
-        this.status = LIVRE;
+        this.status = Status.LIVRE;
     }
 
     public Veiculo(int cod, String fabricante, String modelo, String ano, String placa, String renavan, String cor, String categoria, int km, int status) {
@@ -45,7 +48,7 @@ public class Veiculo implements Serializable {
         this.cor = cor;
         this.categoria = categoria;
         this.km = km;
-        this.status = LIVRE;
+        this.status = Status.LIVRE;
     }
 
     public int getCod() {
@@ -120,11 +123,11 @@ public class Veiculo implements Serializable {
         this.km = km;
     }
 
-    public int getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

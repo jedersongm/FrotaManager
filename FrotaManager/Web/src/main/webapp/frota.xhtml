@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <!--    <head>        
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        </head>-->
+
+    <div class="dj-list__funcionalidades">
+        <ul>            
+            <li>
+                <div>                         
+                    <button type="button" class="dj-button btn-primary" data-toggle="modal" data-target="#novoVeiculo" >
+                        <span class="glyphicon glyphicon-plus"></span>                                                                          
+                    </button>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <button class="dj-button btn-danger">
+                        <span class="glyphicon glyphicon-trash"></span>                                                  
+                    </button>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <button data-toggle="modal" data-target="#novoCliente" class="dj-button btn-primary">                        
+                        <span class="glyphicon glyphicon-ban-circle"></span>  
+                    </button>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <button class="dj-button btn-danger">                        
+                        <span class="glyphicon glyphicon-ok-circle"></span>  
+                    </button>
+                </div>
+            </li>                        
+        </ul>
+    </div>
+    <table class="table table-responsive">
+        <tr class="hidden-xs">
+            <th></th>
+            <th>ID</th>
+            <th>Fabricante</th>
+            <th>Modelo</th>                        
+            <th>Ano</th>
+            <th>Placa</th>
+            <th>Categoria</th>
+            <th>Km's</th>
+            <th>Status</th>
+            <th></th>
+        </tr>   
+        foreach #{controladorVeiculo.frota.size()}
+        <c:forEach items="#{controladorVeiculo.frota}" var="veiculo">
+            <tr>                                   
+                <td class="hidden-xs"></td>
+                <td class="hidden-xs">#{veiculo.cod}</td>                            
+                <td class="hidden-xs">#{veiculo.fabricante}</td>
+                <td class="hidden-xs">#{veiculo.modelo}</td>
+                <td class="hidden-xs">#{veiculo.ano}</td>                            
+                <td class="hidden-xs">#{veiculo.placa}</td>
+                <td class="hidden-xs">#{veiculo.categoria}</td>
+                <td class="hidden-xs">#{veiculo.km}</td>                            
+                <td class="hidden-xs">#{veiculo.status}</td>
+                <td class="hidden-xs"></td>
+            </tr>
+        </c:forEach>
+    </table>   
+
+    <!-- Modal -->
+    <div id="novoVeiculo" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">                                   
+                    <h4 class="modal-title">Novo Veiculo</h4>
+                </div>
+                <h:form>
+                    <div class="modal-body">
+
+                        <h:inputText class="form-control input-lg form-bordas_bottom" pt:placeholder="Fabricante" value="#{controladorVeiculo.novoVeiculo.fabricante}" /><br/>
+                        <h:inputText class="form-control input-lg form-bordas_bottom" pt:placeholder="Modelo" value="#{controladorVeiculo.novoVeiculo.modelo}" /><br/>
+                        <h:inputText class="form-control input-lg form-bordas_bottom" pt:placeholder="Cor" value="#{controladorVeiculo.novoVeiculo.cor}" /><br/>
+                        <h:inputText class="form-control input-lg form-bordas_bottom" pt:placeholder="Categoria" value="#{controladorVeiculo.novoVeiculo.categoria}" /><br/>
+                        <h:inputText class="form-control input-lg form-bordas_bottom" pt:placeholder="Ano" value="#{controladorVeiculo.novoVeiculo.ano}" /><br/>
+                        <h:inputText class="form-control input-lg form-bordas_bottom" pt:placeholder="Quilometros Rodados" value="#{controladorVeiculo.novoVeiculo.km}" /><br/>
+                        <h:inputText class="form-control input-lg form-bordas_bottom" pt:placeholder="Placa" value="#{controladorVeiculo.novoVeiculo.placa}" /><br/>
+                        <h:inputText class="form-control input-lg form-bordas_bottom" pt:placeholder="Renavan" value="#{controladorVeiculo.novoVeiculo.renavan}" /><br/>
+
+                    </div>
+                    <div class="modal-footer">
+                        <h:commandButton value="CADASTRAR" class="btn btn-danger btn-bordas-redondas btn-meio-largo" action="#{controladorVeiculo.salvarVeiculo()}" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </h:form>
+            </div>
+
+        </div>
+    </div>
+</html>
