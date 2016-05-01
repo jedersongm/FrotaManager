@@ -20,7 +20,6 @@ public class Veiculo implements Serializable {
 
     @Id
     @GeneratedValue
-    private long id;
     private int cod;
     private String fabricante;
     private String modelo;
@@ -47,28 +46,6 @@ public class Veiculo implements Serializable {
         this.categoria = categoria;
         this.km = km;
         this.status = LIVRE;
-    }
-
-    public Veiculo(long id, int cod, String fabricante, String modelo, String ano, String placa, String renavan, String cor, String categoria, int km, int status) {
-        this.id = id;
-        this.cod = cod;
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this.ano = ano;
-        this.placa = placa;
-        this.renavan = renavan;
-        this.cor = cor;
-        this.categoria = categoria;
-        this.km = km;
-        this.status = LIVRE;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public int getCod() {
@@ -154,7 +131,7 @@ public class Veiculo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 97 * hash + (int) (this.cod ^ (this.cod >>> 32));
         return hash;
     }
 
@@ -167,7 +144,7 @@ public class Veiculo implements Serializable {
             return false;
         }
         final Veiculo other = (Veiculo) obj;
-        if (this.id != other.id) {
+        if (this.cod != other.cod) {
             return false;
         }
         return true;
@@ -175,7 +152,7 @@ public class Veiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "Veiculo{" + "id=" + id + ", cod=" + cod + ", fabricante=" + fabricante + ", modelo=" + modelo + ", ano=" + ano + ", placa=" + placa + ", renavan=" + renavan + ", cor=" + cor + ", categoria=" + categoria + ", km=" + km + ", status=" + status + '}';
+        return "Veiculo{" + "cod=" + cod + ", fabricante=" + fabricante + ", modelo=" + modelo + ", ano=" + ano + ", placa=" + placa + ", renavan=" + renavan + ", cor=" + cor + ", categoria=" + categoria + ", km=" + km + ", status=" + status + '}';
     }
 
 }

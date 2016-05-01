@@ -1,16 +1,22 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:bnu="http://bootsfaces.net/ui">
+
     <h:head>
-        <title>FrotaManager</title>        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
     </h:head>
+
     <h:body>
-        <div id="header">
-            <ui:insert name="header">
-                <bnu:navBar brand="FrotaManager" fixed="top">
+
+        <div id="top">
+            <ui:insert name="top">
+                 <bnu:navBar brand="FrotaManager" fixed="top">
                     <h:form styleClass="navbar-form navbar-right" rendered="#{controladorFuncionario.funcionario == null}">
                         <div class="form-group">
                             <h:outputLabel for="login" value="Login:"/>
@@ -25,22 +31,24 @@
                         <bnu:commandButton value="Sign In" look="success" action="#{controladorFuncionario.login()}" />
                     </h:form>                    
 
-                    <div Class="navbar-form navbar-right">
+                    <div class="navbar-form navbar-right">
                         #{controladorFuncionario.funcionario.nome}
                     </div>
 
                 </bnu:navBar>
             </ui:insert>
         </div>
-        <div id="center">
 
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
         </div>
-        <div id="footer">
-            <ui:insert name="footer">
+
+        <div id="bottom">
+            <ui:insert name="bottom">
                 <p>&copy; Jéderson&amp;Kaique - IFPB 2016</p>
             </ui:insert>
         </div>
 
     </h:body>
-</html>
 
+</html>

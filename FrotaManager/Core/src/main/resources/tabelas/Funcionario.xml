@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<dataset>
+    <Funcionario
+        cod = "67"
+        cnh = "05612540230"
+        cpf = "492.679.664-30"
+        cargo = "suporte em redes"
+        categoria = "A|B"
+        celular = "83 996723411"
+        datanascimento = "17/04/1994"
+        email = "jederson@netlinepb.com.br"
+        foto = "imagens/jederson.jpg"
+        nome = "Jéderson"
+        senha = "123"    
+        sexo = "Masculino"  
+        telefoneempresa = "83 35324039"
+        cep = "58900-000"
+        bairro = "PIO X"
+        cidade = "Cajazeiras"
+        estado = "Paraíba"
+        numero = "258"
+        rua = "Loteamento Cristal"                  
+    />
+</dataset>
+
+

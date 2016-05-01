@@ -36,6 +36,7 @@ public class Funcionario implements Serializable {
     private String CNH;
     private String categoria;
     private String foto;
+    private boolean admin;
     private String cargo;
     @Embedded
     private Endereço endereço;
@@ -45,7 +46,7 @@ public class Funcionario implements Serializable {
     public Funcionario() {
     }
 
-    public Funcionario(int cod, String nome, String senha, String email, String celular, String telefoneEmpresa, Date dataNascimento, String sexo, String CPF, String CNH, String categoria, String foto, String cargo, Endereço endereço, Locacao locação) {
+    public Funcionario(int cod, String nome, String senha, String email, String celular, String telefoneEmpresa, Date dataNascimento, String sexo, String CPF, String CNH, String categoria, String foto, boolean admin, String cargo, Endereço endereço, Locacao locação) {
         this.cod = cod;
         this.nome = nome;
         this.senha = senha;
@@ -58,10 +59,13 @@ public class Funcionario implements Serializable {
         this.CNH = CNH;
         this.categoria = categoria;
         this.foto = foto;
+        this.admin = admin;
         this.cargo = cargo;
         this.endereço = endereço;
         this.locação = locação;
     }
+
+    
 
     public Funcionario(long id, int cod, String nome, String senha, String email, String celular, String telefoneEmpresa, Date dataNascimento, String sexo, String CPF, String CNH, String categoria, String foto, String cargo, Endereço endereço, Locacao locação) {
         this.cod = cod;
@@ -201,6 +205,14 @@ public class Funcionario implements Serializable {
         this.locação = locação;
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -227,7 +239,8 @@ public class Funcionario implements Serializable {
 
     @Override
     public String toString() {
-        return "Funcionario{" + "cod=" + cod + ", nome=" + nome + ", senha=" + senha + ", email=" + email + ", celular=" + celular + ", telefoneEmpresa=" + telefoneEmpresa + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", CPF=" + CPF + ", CNH=" + CNH + ", categoria=" + categoria + ", foto=" + foto + ", cargo=" + cargo + ", endere\u00e7o=" + endereço + ", loca\u00e7\u00e3o=" + locação + '}';
+        return "Funcionario{" + "cod=" + cod + ", nome=" + nome + ", senha=" + senha + ", email=" + email + ", celular=" + celular + ", telefoneEmpresa=" + telefoneEmpresa + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", CPF=" + CPF + ", CNH=" + CNH + ", categoria=" + categoria + ", foto=" + foto + ", admin=" + admin + ", cargo=" + cargo + ", endere\u00e7o=" + endereço + ", loca\u00e7\u00e3o=" + locação + '}';
     }
 
+   
 }
